@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <style>
+        /* Solo para ocultar/mostrar la sección de edición */
+        #editSection {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Página principal: Perfil de usuario -->
+    <header>
+        <h1 align="center">Perfil de Usuario</h1>
+    </header>
+    <div align="center">
+        <img src="imagen Santi.jpg" alt="Foto de Perfil" width="240" height="300" id="profilePicture">
+        <h2 id="usernameDisplay">Santiago Herrerías</h2>
+    </div>
+    <main>
+        <article align="center">
+            <h2>Sobre mí</h2>
+            <p id="aboutMeDisplay">
+                ¡Hola! Soy Santi, estudiante de Ingeniería en Sistemas de la Información en la UTN Mendoza. Me apasiona aprender y explorar nuevas tecnologías, así como también disfrutar de la fotografía de paisajes y el deporte. Me encanta resolver problemas, crear proyectos que tengan impacto y siempre busco darle un toque creativo a lo que hago.
+            </p>
+        </article>
+        <table align="center" border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="emailDisplay">santiago.herrerias.utn@gmail.com</td>
+                    <td id="phoneDisplay">261-700-5596</td>
+                </tr>
+            </tbody>
+        </table>
+        <div align="center">
+            <button onclick="showEditSection()">Cambiar Perfil de Usuario</button>
+        </div>
+    </main>
+
+    <!-- Sección de edición (oculta inicialmente) -->
+    <div id="editSection">
+        <footer>
+            <form align="center">
+                <h3>Actualizar Perfil</h3>
+                <label for="newUsername">Nuevo nombre de usuario:</label><br>
+                <input type="text" id="newUsername" name="newUsername"><br><br>
+                <label for="newEmail">Nuevo email:</label><br>
+                <input type="email" id="newEmail" name="newEmail"><br><br>
+                <label for="newPhone">Nuevo teléfono:</label><br>
+                <input type="tel" id="newPhone" name="newPhone"><br><br>
+                <label for="newAboutMe">Nuevo "Sobre mí":</label><br>
+                <textarea id="newAboutMe" name="newAboutMe" rows="4" cols="50"></textarea><br><br>
+                <button type="button" onclick="updateProfile()">Guardar Cambios</button>
+                <button type="button" onclick="hideEditSection()">Cancelar</button>
+            </form>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar la sección de edición
+        function showEditSection() {
+            document.getElementById('editSection').style.display = 'block';
+        }
+
+        // Función para ocultar la sección de edición
+        function hideEditSection() {
+            document.getElementById('editSection').style.display = 'none';
+        }
+
+        // Función para actualizar el perfil
+        function updateProfile() {
+            const newUsername = document.getElementById('newUsername').value;
+            const newEmail = document.getElementById('newEmail').value;
+            const newPhone = document.getElementById('newPhone').value;
+            const newAboutMe = document.getElementById('newAboutMe').value;
+
+            if (newUsername) {
+                document.getElementById('usernameDisplay').textContent = newUsername;
+            }
+            if (newEmail) {
+                document.getElementById('emailDisplay').textContent = newEmail;
+            }
+            if (newPhone) {
+                document.getElementById('phoneDisplay').textContent = newPhone;
+            }
+            if (newAboutMe) {
+                document.getElementById('aboutMeDisplay').textContent = newAboutMe;
+            }
+
+            alert("Perfil actualizado correctamente.");
+            hideEditSection(); // Ocultar la sección de edición después de guardar
+        }
+    </script>
+</body>
+</html>
